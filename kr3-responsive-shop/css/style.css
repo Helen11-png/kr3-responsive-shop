@@ -5,7 +5,7 @@
   /* Основные цвета проекта */
 --color-bg: #3D665A;
   --color-text: #FFF5DC;
-  --color-muted: #D9E0DC;            /* был #666666: на тёмном фоне не читался */
+  --color-muted: #D9E0DC;           
   --color-primary: #9DBB8C;          /* светлый зелёный: контраст с тёмным фоном > 6:1 */
   --color-primary-hover: #C9DFBC;
   --color-primary-dark: #4a5741;
