@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контакты SuperTutor: телефон, e-mail, адрес и форма обратной связи.">
+  <title>Контакты — SuperTutor</title>
+  <!-- Класс js нужен CSS: меню сворачивается только когда JavaScript работает -->
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Контакты — SuperTutor">
+  <meta property="og:description" content="Контакты SuperTutor: телефон, e-mail, адрес и форма обратной связи.">
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="index.html">SuperTutor</a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+      Меню
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="contacts.html" aria-current="page">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <a class="breadcrumbs__link" href="index.html">Главная</a>
+  <span class="breadcrumbs__current" aria-current="page">Контакты</span>
+</nav>
+
+  <section class="section">
+    <h1>Контакты</h1>
+    <p>Здесь размещается контактная информация учебного интернет-магазина.</p>
+  </section>
+
+  <div class="contacts-layout">
+    <section class="contacts-card" aria-labelledby="contacts-title">
+      <h2 id="contacts-title">Как с нами связаться</h2>
+      <ul class="contacts__list">
+        <li>Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a></li>
+        <li>E-mail: <a href="mailto:info@example.com">info@example.com</a></li>
+        <li>Адрес: г. Москва, учебный проект</li>
+      </ul>
+    </section>
+
+    <section class="order-page" id="feedback" aria-labelledby="feedback-title">
+      <h2 id="feedback-title">Обратная связь</h2>
+      <form class="order-form feedback-form" id="feedback-form" action="#" method="post" novalidate>
+
+      <div class="order-form__field">
+        <label class="order-form__label" for="fb-name">Имя</label>
+        <input class="order-form__input" id="fb-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="fb-email">E-mail</label>
+        <input class="order-form__input" id="fb-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email" required>
+      </div>
+      <div class="order-form__field order-form__field--full">
+        <label class="order-form__label" for="fb-message">Сообщение</label>
+        <textarea class="order-form__textarea" id="fb-message" name="message" rows="5" placeholder="Задайте вопрос или оставьте отзыв" minlength="10" required></textarea>
+      </div>
+      <div class="order-form__field order-form__field--checkbox">
+        <label>
+          <input id="fb-agreement" name="agreement" type="checkbox" required>
+          <span>Я согласен на обработку данных</span>
+        </label>
+      </div>
+
+        <div class="order-form__actions">
+          <button class="button button--primary" type="submit">Отправить сообщение</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+  <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+</footer>
+
+<p class="success-message" id="success-message" role="status" hidden></p>
+
+</body>
+</html>

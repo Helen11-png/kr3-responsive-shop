@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Каталог курсов SuperTutor: 10 курсов по школьным и дополнительным предметам.">
+  <title>Каталог товаров — SuperTutor</title>
+  <!-- Класс js нужен CSS: меню сворачивается только когда JavaScript работает -->
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Каталог товаров — SuperTutor">
+  <meta property="og:description" content="Каталог курсов SuperTutor: 10 курсов по школьным и дополнительным предметам.">
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="index.html">SuperTutor</a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+      Меню
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <a class="breadcrumbs__link" href="index.html">Главная</a>
+  <span class="breadcrumbs__current" aria-current="page">Каталог</span>
+</nav>
+
+  <section class="section">
+    <h1>Каталог курсов</h1>
+    <p>Выберите курсы для подготовки к экзаменам или для саморазвития. Опытные кураторы помогут вам разобраться в теме!</p>
+  </section>
+
+  <div class="catalog-layout">
+    <aside class="catalog-filters" aria-label="Фильтры каталога">
+      <!-- На мобильном фильтр свёрнут, на ПК раскрыт (см. js/main.js) -->
+      <details open>
+        <summary class="catalog-filters__summary">Фильтры</summary>
+
+        <form class="catalog-filters__form" action="#" method="get">
+          <fieldset class="catalog-filters__group">
+            <legend>Категория</legend>
+
+            <label class="catalog-filters__option">
+              <input type="checkbox" name="category" value="all">
+              Все услуги
+            </label>
+
+            <label class="catalog-filters__option">
+              <input type="checkbox" name="category" value="popular">
+              Популярные
+            </label>
+
+            <label class="catalog-filters__option">
+              <input type="checkbox" name="category" value="new">
+              Новинки
+            </label>
+          </fieldset>
+
+          <fieldset class="catalog-filters__group">
+            <legend>Цена</legend>
+
+            <label class="catalog-filters__label" for="price-from">От</label>
+            <input class="catalog-filters__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
+
+            <label class="catalog-filters__label" for="price-to">До</label>
+            <input class="catalog-filters__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+          </fieldset>
+
+          <button class="button" type="submit">Применить</button>
+        </form>
+      </details>
+    </aside>
+
+    <section class="catalog-layout__products" aria-labelledby="catalog-list-title">
+      <h2 id="catalog-list-title">Список курсов</h2>
+
+      <div class="products-grid">
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/math-320.webp 320w, images/math-480.webp 480w, images/math-720.webp 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/math-480.jpg" srcset="images/math-320.jpg 320w, images/math-480.jpg 480w, images/math-720.jpg 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Математика" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Математика</h3>
+        <p class="product-card__description">Подготовка к ОГЭ и ЕГЭ, разбор сложных тем школьной программы.</p>
+        <p class="product-card__price">Цена: 1200 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <a class="button button--secondary" href="product.html">Подробнее</a>
+          <button class="button product-card__button" type="button" data-product="Математика">Заказать</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/phys-320.webp 320w, images/phys-480.webp 480w, images/phys-720.webp 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/phys-480.jpg" srcset="images/phys-320.jpg 320w, images/phys-480.jpg 480w, images/phys-720.jpg 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Физика" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Физика</h3>
+        <p class="product-card__description">Этот курс познакомит вас с основными законами на уровне ЕГЭ по физике.</p>
+        <p class="product-card__price">Цена: 1200 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <button class="button product-card__button" type="button" data-product="Физика">Заказать</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/chem-320.webp 320w, images/chem-480.webp 480w, images/chem-720.webp 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/chem-480.jpg" srcset="images/chem-320.jpg 320w, images/chem-480.jpg 480w, images/chem-720.jpg 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Химия" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Химия</h3>
+        <p class="product-card__description">Подготовка к ОГЭ с нуля!</p>
+        <p class="product-card__price">Цена: 1100 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <button class="button product-card__button" type="button" data-product="Химия">Заказать</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/bio-320.webp 320w, images/bio-480.webp 480w, images/bio-538.webp 538w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/bio-480.jpg" srcset="images/bio-320.jpg 320w, images/bio-480.jpg 480w, images/bio-538.jpg 538w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Биология" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Биология</h3>
+        <p class="product-card__description">Подготовка к ОГЭ и ЕГЭ по биологии: от основ до сложных тем.</p>
+        <p class="product-card__price">Цена: 1100 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <button class="button product-card__button" type="button" data-product="Биология">Заказать</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/eng-320.webp 320w, images/eng-480.webp 480w, images/eng-720.webp 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/eng-480.jpg" srcset="images/eng-320.jpg 320w, images/eng-480.jpg 480w, images/eng-720.jpg 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Английский язык" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Английский язык</h3>
+        <p class="product-card__description">Курс для начинающих: разговорная практика и базовая грамматика.</p>
+        <p class="product-card__price">Цена: 1000 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <button class="button product-card__button" type="button" data-product="Английский язык">Заказать</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/lit-320.webp 320w, images/lit-480.webp 480w, images/lit-640.webp 640w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/lit-480.jpg" srcset="images/lit-320.jpg 320w, images/lit-480.jpg 480w, images/lit-640.jpg 640w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Литература" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Литература</h3>
+        <p class="product-card__description">Подготовка к итоговому сочинению и разбор произведений школьной программы.</p>
+        <p class="product-card__price">Цена: 1000 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <button class="button product-card__button" type="button" data-product="Литература">Заказать</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/prog-320.webp 320w, images/prog-480.webp 480w, images/prog-720.webp 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/prog-480.jpg" srcset="images/prog-320.jpg 320w, images/prog-480.jpg 480w, images/prog-720.jpg 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Программирование" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Программирование</h3>
+        <p class="product-card__description">Основы Python для школьников: алгоритмы, синтаксис, первые проекты.</p>
+        <p class="product-card__price">Цена: 1500 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <button class="button product-card__button" type="button" data-product="Программирование">Заказать</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/fin-320.webp 320w, images/fin-480.webp 480w, images/fin-720.webp 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/fin-480.jpg" srcset="images/fin-320.jpg 320w, images/fin-480.jpg 480w, images/fin-720.jpg 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Финансовая грамотность" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Финансовая грамотность</h3>
+        <p class="product-card__description">Основы личных финансов, бюджет и первые шаги в инвестициях.</p>
+        <p class="product-card__price">Цена: 900 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <button class="button product-card__button" type="button" data-product="Финансовая грамотность">Заказать</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/mus-320.webp 320w, images/mus-480.webp 480w, images/mus-720.webp 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/mus-480.jpg" srcset="images/mus-320.jpg 320w, images/mus-480.jpg 480w, images/mus-720.jpg 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Музыка" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Музыка</h3>
+        <p class="product-card__description">Сольфеджио и теория музыки для учеников музыкальной школы.</p>
+        <p class="product-card__price">Цена: 900 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <button class="button product-card__button" type="button" data-product="Музыка">Заказать</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <picture class="product-card__picture">
+          <source type="image/webp" srcset="images/suc-320.webp 320w, images/suc-480.webp 480w, images/suc-720.webp 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw">
+          <img class="product-card__image" src="images/suc-480.jpg" srcset="images/suc-320.jpg 320w, images/suc-480.jpg 480w, images/suc-720.jpg 720w" sizes="(min-width: 1024px) 220px, (min-width: 700px) 30vw, (min-width: 520px) 45vw, 100vw" alt="Успешный успех" width="480" height="360" loading="lazy">
+        </picture>
+        <h3 class="product-card__title">Успешный успех</h3>
+        <p class="product-card__description">Как зарабатывать ничего не делая</p>
+        <p class="product-card__price">Цена: 9000 руб/академ. час.</p>
+        <div class="product-card__actions">
+          <button class="button product-card__button" type="button" data-product="Успешный успех">Заказать</button>
+        </div>
+      </article>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+  <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+</footer>
+
+<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+  <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+
+  <form class="order-form" id="order-form" action="#" method="post" novalidate>
+    <input id="selected-product" name="selected-product" type="hidden">
+
+      <div class="order-form__field">
+        <label class="order-form__label" for="dlg-name">Имя</label>
+        <input class="order-form__input" id="dlg-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="dlg-email">E-mail</label>
+        <input class="order-form__input" id="dlg-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email" required>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="dlg-phone">Телефон</label>
+        <input class="order-form__input" id="dlg-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" data-error="Введите телефон в формате +7 (900) 000-00-00" autocomplete="tel" aria-describedby="dlg-phone-hint" required>
+        <small class="order-form__hint" id="dlg-phone-hint">Формат: +7 (900) 000-00-00</small>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="dlg-date">Дата связи</label>
+        <input class="order-form__input" id="dlg-date" name="date" type="date">
+      </div>
+      <div class="order-form__field order-form__field--full">
+        <label class="order-form__label" for="dlg-topic">Тема заявки</label>
+        <select class="order-form__select" id="dlg-topic" name="topic" required>
+          <option value="">Выберите тему</option>
+          <option value="product">Заказ товара</option>
+          <option value="consultation">Консультация</option>
+          <option value="delivery">Доставка</option>
+        </select>
+      </div>
+      <div class="order-form__field order-form__field--full">
+        <label class="order-form__label" for="dlg-comment">Комментарий</label>
+        <textarea class="order-form__textarea" id="dlg-comment" name="comment" rows="4" placeholder="Укажите дополнительную информацию"></textarea>
+      </div>
+      <div class="order-form__field order-form__field--checkbox">
+        <label>
+          <input id="dlg-agreement" name="agreement" type="checkbox" required>
+          <span>Я согласен на обработку данных</span>
+        </label>
+      </div>
+
+      <div class="order-form__actions">
+        <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button button--primary" type="submit">Отправить заявку</button>
+      </div>
+  </form>
+</dialog>
+
+<p class="success-message" id="success-message" role="status" hidden></p>
+
+</body>
+</html>

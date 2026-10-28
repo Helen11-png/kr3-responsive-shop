@@ -1,0 +1,653 @@
+/* ===============================
+   1. Переменные проекта
+   =============================== */
+:root {
+  /* Основные цвета проекта */
+--color-bg: #3D665A;
+  --color-text: #FFF5DC;
+  --color-muted: #D9E0DC;            /* был #666666: на тёмном фоне не читался */
+  --color-primary: #9DBB8C;          /* светлый зелёный: контраст с тёмным фоном > 6:1 */
+  --color-primary-hover: #C9DFBC;
+  --color-primary-dark: #4a5741;
+  --color-ink: #1B2420;              /* тёмный текст на светлых кнопках */
+  --color-focus: #FFD166;            /* цвет кольца фокуса */
+  --color-border: #dddddd;
+  --color-surface: #f7f7f7;
+  --color-surface-accent: #2E4A42;
+  --color-danger: #FF8A7A;           /* был #b00020: сливался с тёмным фоном */
+  --color-success: #168a2f;
+  --color-success-bg: #666666;
+  --color-white: #ffffff;
+
+  /* Отступы */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Скругления */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+/* Размеры */
+  --container-width: 1100px;
+}
+
+/* ===============================
+   2. Базовые стили
+   =============================== */
+/*
+  Универсальное правило для всех элементов.
+  border-box делает расчёт размеров более понятным:
+  width включает content, padding и border.
+*/
+* {
+  box-sizing: border-box;
+}
+
+/*
+  Убираем стандартный внешний отступ браузера у body.
+  Цвет текста берём из переменной --color-text (светлый),
+  а не задаём напрямую — иначе он не будет виден на тёмном фоне.
+*/
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: #293330;
+  min-height: 100vh;     
+  display: flex;          
+  flex-direction: column;
+}
+
+main {
+  flex: 1; 
+}
+
+/*
+  Задаём внутренние отступы для основных областей страницы.
+  Это делает содержимое визуально отделённым от краёв окна браузера.
+*/
+.site-header,
+main,
+.site-footer {
+  padding: var(--space-lg);
+}
+
+
+/*
+  Оформляем подвал страницы тем же тёмным цветом, что и карточки,
+  hero-блок и aside — чтобы все «панели» на странице были одного тона.
+*/
+.site-footer {
+  background-color: var(--color-bg);
+}
+
+section {
+  margin-bottom: 24px;
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+/* ===============================
+   3. Общие элементы интерфейса
+   =============================== */
+/*
+  Ограничиваем ширину содержимого шапки,
+  чтобы оно не растягивалось слишком сильно на широких экранах.
+*/
+.site-header {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/*
+  Оформляем текстовый логотип.
+  Цвет — светлый, из переменной --color-text, чтобы логотип было видно
+  на тёмном фоне шапки (жёстко заданный тёмный цвет делал его невидимым).
+*/
+.site-header__logo {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+/*
+  Убираем стандартные отступы и маркеры списка навигации.
+*/
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0;
+  margin: var(--space-md) 0 0;
+list-style: none;
+}
+
+
+/*
+  Добавляем расстояние между пунктами меню.
+*/
+.site-nav__item {
+  margin-bottom: 8px;
+}
+
+/*
+  Оформляем ссылки меню.
+*/
+.site-nav__link {
+display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-primary);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+
+.site-nav__link:hover {
+  color: var(--color-ink);
+  background-color: var(--color-primary);
+}
+
+
+a {
+  color: var(--color-primary);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--color-focus);
+outline-offset: 3px;
+}
+
+/*
+  Пока это обычная ссылка, но визуально она оформляется как кнопка.
+*/
+.button {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-ink);
+  font-weight: 700;
+  background-color: var(--color-primary);
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* ===============================
+   4. Компоненты страницы
+=============================== */
+
+/*
+  Hero-блок красится в тот же цвет, что и aside-info ниже (var(--color-bg)),
+  чтобы обе секции выглядели как единый тёмный «слой» интерфейса,
+  а не как два случайных, разных по цвету блока.
+*/
+.hero {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+  padding: var(--space-xl) var(--space-lg);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-lg);
+}
+
+.section {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+}
+
+.section h2 {
+  margin-top: 0;
+}
+
+/*
+  Карточка товара — самостоятельный блок.
+  На следующих занятиях карточки будут доработаны и выстроены в сетку.
+*/
+/*
+  position: relative нужен, чтобы бейдж («Идёт набор», «Новинка»)
+  позиционировался абсолютно относительно самой карточки,
+  а не относительно всей страницы.
+*/
+.product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+}
+
+/*
+  Бейдж курса — «Идёт набор», «Новинка» и т. п.
+  position: absolute вынимает бейдж из потока и кладёт его
+  в угол карточки (родитель — .product-card с position: relative).
+*/
+.product-card__badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-ink);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.product-card__button {
+  margin-top: auto;
+align-self: flex-start;
+}
+
+/*
+  Изображение курса. У карточки есть padding со всех сторон,
+  поэтому картинку "вытягиваем" отрицательными полями, чтобы она
+  доходила до самых краёв карточки, а не была с отступом как текст.
+*/
+.product-card__image {
+  width: calc(100% + var(--space-md) * 2);
+  aspect-ratio: 1 / 1;
+  margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) 0;
+  object-fit: cover;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  display: block;
+}
+
+
+.product-card:hover {
+  border-color: var(--color-primary);
+}
+
+.product-card__title {
+  margin-top: 0;
+}
+
+
+/*
+  Дополнительный информационный блок.
+  Тот же цвет, что и у hero-блока (var(--color-bg)) — раньше здесь был
+  другой, отдельный светлый оттенок (var(--color-surface)), из-за чего
+  hero и aside визуально не совпадали.
+*/
+.aside-info {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+  padding: var(--space-md);
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-bg);
+}
+
+
+/*
+  Сообщение об успешной отправке.
+*/
+.success-message {
+  max-width: var(--container-width);
+  margin: var(--space-lg) auto;
+  padding: var(--space-md);
+  border-left: 4px solid var(--color-success);
+  background-color: var(--color-success-bg);
+}
+
+
+/* ===============================
+   5. Форма и модальное окно
+   =============================== */
+
+/*
+  У <dialog> по умолчанию свой белый фон от браузера, если его не задать
+  явно. Добавлены background-color и color, иначе светлый текст формы
+  оказывается на белом фоне и его не видно.
+*/
+/*
+  z-index поднимает модальное окно над плавающей кнопкой заявки
+  и остальным содержимым страницы.
+*/
+.order-dialog {
+  z-index: 30;
+width: min(100% - 32px, 560px);
+  padding: var(--space-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/*
+  Обёртка для order.html — та же форма order-form,
+  но не в диалоге, а в обычном разделе страницы.
+*/
+.order-page {
+  max-width: 640px;
+  margin: 0 auto var(--space-xl);
+  padding: var(--space-lg);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.order-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.order-form__field {
+  margin-bottom: var(--space-md);
+}
+
+.order-form__label {
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.order-form__input,
+.order-form__select,
+.order-form__textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  color: var(--color-ink);
+  background-color: var(--color-white);
+}
+
+.order-form__field--checkbox input[type="checkbox"] {
+  width: auto;
+}
+
+.order-form__hint {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+}
+
+/*
+  Видимый фокус для клавиатурной навигации.
+*/
+.order-form__input:hover,
+.order-form__select:hover,
+.order-form__textarea:hover {
+  border-color: var(--color-primary);
+}
+
+.order-form__input:focus-visible,
+.order-form__select:focus-visible,
+.order-form__textarea:focus-visible,
+.order-form__actions .button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+[aria-invalid="true"] {
+  border-color: var(--color-danger);
+}
+
+
+
+/*
+  Кнопки формы.
+*/
+.order-form__actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+.breadcrumbs {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-md);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.breadcrumbs__link {
+  color: var(--color-primary);
+}
+
+.breadcrumbs__link::after {
+  content: " / ";
+  color: var(--color-muted);
+}
+html {
+  scroll-behavior: smooth;
+}
+:target {
+  outline: 2px dashed var(--color-primary);
+outline-offset: 4px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+gap: var(--space-lg);
+}
+
+/*
+  В каталоге карточек больше (10 штук) и у каждой есть квадратная
+  картинка, поэтому здесь колонки уже, чем в общем .products-grid —
+  так карточки получаются компактнее и их помещается больше в ряд,
+  а не 3 крупные на всю ширину, как на главной странице.
+*/
+.catalog-layout__products .products-grid {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-md);
+}
+
+/*
+  Раскладка страницы каталога: фильтры слева, список курсов справа.
+  Без display: grid здесь aside и section просто шли друг под другом
+  на всю ширину, а не колонками.
+*/
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-lg);
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+  align-items: start;
+}
+
+/*
+  position: sticky держит фильтры на экране, пока список курсов
+  прокручивается — сайдбар "прилипает" к верху на расстоянии
+  var(--space-lg) и остаётся видимым, пока не кончится его родитель.
+*/
+.catalog-filters {
+  position: sticky;
+  top: var(--space-lg);
+  padding: var(--space-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.catalog-filters__form {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.catalog-filters__group {
+  margin: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.catalog-filters__group legend {
+  font-weight: 700;
+}
+
+.catalog-filters__option,
+.catalog-filters__label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.catalog-filters__input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+font: inherit;
+  color: var(--color-ink);
+  background-color: var(--color-white);
+}
+
+
+/* ===============================
+   6. Страница курса (product.html)
+   =============================== */
+
+.course {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: var(--space-xl);
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+  align-items: start;
+}
+
+/*
+  position: relative — та же логика, что и у .product-card:
+  бейдж курса кладётся поверх изображения через position: absolute.
+*/
+.course__media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-surface-accent);
+}
+
+.course__image {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.course__badge {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-ink);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.course__body {
+  padding: var(--space-lg);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.course__title {
+  margin-top: 0;
+}
+
+.course__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: 0 0 var(--space-md);
+  padding: 0;
+  list-style: none;
+}
+
+.course__meta-item {
+  padding: 4px 10px;
+  font-size: 13px;
+  color: var(--color-text);
+  background-color: var(--color-surface-accent);
+  border-radius: var(--radius-sm);
+}
+
+.course__price {
+  margin: var(--space-md) 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.course__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/*
+  Таблица характеристик курса.
+*/
+.product-table {
+  width: 100%;
+  margin: var(--space-md) 0 var(--space-lg);
+  border-collapse: collapse;
+}
+
+.product-table caption {
+  margin-bottom: var(--space-sm);
+  color: var(--color-muted);
+  text-align: left;
+}
+
+.product-table th,
+.product-table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.product-table th {
+  width: 40%;
+  font-weight: 600;
+}
+
+
+/* ===============================
+   7. Плавающая кнопка заявки
+   =============================== */
+/*
+  position: fixed держит кнопку на экране при любой прокрутке страницы,
+  z-index — выше обычного контента, чтобы кнопка не пряталась под ним.
+*/
+.cta-float {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}

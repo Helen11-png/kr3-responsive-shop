@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Курс «Математика» — подготовка к ОГЭ и ЕГЭ в SuperTutor.">
+  <title>Математика — курс в SuperTutor</title>
+  <!-- Класс js нужен CSS: меню сворачивается только когда JavaScript работает -->
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Математика — курс в SuperTutor">
+  <meta property="og:description" content="Курс «Математика» — подготовка к ОГЭ и ЕГЭ в SuperTutor.">
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="index.html">SuperTutor</a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+      Меню
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html" aria-current="page">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <a class="breadcrumbs__link" href="index.html">Главная</a>
+  <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+  <span class="breadcrumbs__current" aria-current="page">Математика</span>
+</nav>
+
+  <section class="course">
+    <div class="course__media">
+      <picture class="course__picture">
+          <source type="image/webp" srcset="images/math-320.webp 320w, images/math-480.webp 480w, images/math-720.webp 720w" sizes="(min-width: 900px) 45vw, 100vw">
+          <img class="course__image" src="images/math-480.jpg" srcset="images/math-320.jpg 320w, images/math-480.jpg 480w, images/math-720.jpg 720w" sizes="(min-width: 900px) 45vw, 100vw" alt="Математика: кот на фоне доски с формулами" width="480" height="360">
+        </picture>
+      <span class="course__badge">Идёт набор</span>
+    </div>
+
+    <div class="course__body">
+      <h1 class="course__title">Математика</h1>
+
+      <p class="course__description">
+        Курс для тех, кто хочет закрыть пробелы в школьной программе и уверенно
+        сдать экзамен. Разбираем теорию, решаем реальные варианты ОГЭ и ЕГЭ,
+        отрабатываем типичные ошибки. Программа подбирается под текущий уровень
+        ученика после пробного занятия.
+      </p>
+
+      <!-- Обёртка: если таблица не поместится, прокручивается только она -->
+      <div class="table-wrapper" role="region" aria-labelledby="specs-caption" tabindex="0">
+        <table class="product-table">
+          <caption id="specs-caption">Характеристики курса</caption>
+          <thead>
+            <tr>
+              <th scope="col">Параметр</th>
+              <th scope="col">Значение</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Предмет</th><td>Математика</td></tr>
+            <tr><th scope="row">Формат</th><td>Онлайн, индивидуально</td></tr>
+            <tr><th scope="row">Уровень</th><td>7–11 класс, подготовка к ОГЭ и ЕГЭ</td></tr>
+            <tr><th scope="row">Длительность занятия</th><td>60 минут</td></tr>
+            <tr><th scope="row">Наличие мест</th><td>Есть свободные места</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="course__price">Цена: 1200 руб/академ. час.</p>
+
+      <div class="course__actions">
+        <button class="button button--primary product-card__button" type="button" data-product="Математика">Записаться</button>
+        <a class="button button--secondary" href="order.html">Оставить заявку</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<a class="button cta-float" href="order.html">Оставить заявку</a>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+  <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+</footer>
+
+<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+  <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+
+  <form class="order-form" id="order-form" action="#" method="post" novalidate>
+    <input id="selected-product" name="selected-product" type="hidden">
+
+      <div class="order-form__field">
+        <label class="order-form__label" for="dlg-name">Имя</label>
+        <input class="order-form__input" id="dlg-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="dlg-email">E-mail</label>
+        <input class="order-form__input" id="dlg-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email" required>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="dlg-phone">Телефон</label>
+        <input class="order-form__input" id="dlg-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" data-error="Введите телефон в формате +7 (900) 000-00-00" autocomplete="tel" aria-describedby="dlg-phone-hint" required>
+        <small class="order-form__hint" id="dlg-phone-hint">Формат: +7 (900) 000-00-00</small>
+      </div>
+      <div class="order-form__field">
+        <label class="order-form__label" for="dlg-date">Дата связи</label>
+        <input class="order-form__input" id="dlg-date" name="date" type="date">
+      </div>
+      <div class="order-form__field order-form__field--full">
+        <label class="order-form__label" for="dlg-topic">Предмет</label>
+        <select class="order-form__select" id="dlg-topic" name="topic" required>
+          <option value="">Выберите предмет</option>
+          <option value="math">Математика</option>
+          <option value="phys">Физика</option>
+          <option value="chem">Химия</option>
+          <option value="consultation">Консультация по выбору курса</option>
+        </select>
+      </div>
+      <div class="order-form__field order-form__field--full">
+        <label class="order-form__label" for="dlg-comment">Комментарий</label>
+        <textarea class="order-form__textarea" id="dlg-comment" name="comment" rows="4" placeholder="Укажите удобное время занятий или другие пожелания"></textarea>
+      </div>
+      <div class="order-form__field order-form__field--checkbox">
+        <label>
+          <input id="dlg-agreement" name="agreement" type="checkbox" required>
+          <span>Я согласен на обработку данных</span>
+        </label>
+      </div>
+
+      <div class="order-form__actions">
+        <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button button--primary" type="submit">Отправить заявку</button>
+      </div>
+  </form>
+</dialog>
+
+<p class="success-message" id="success-message" role="status" hidden></p>
+
+</body>
+</html>
